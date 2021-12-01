@@ -1,19 +1,43 @@
-import { readLines } from "https://deno.land/std/io/bufio.ts";
+import { splitFileByLines } from "../utils/file";
 
-const file = await Deno.open("./input.txt");
+const inputPath = "day-01/input.txt";
 
-let previous = null;
-let numberOfIncreases = 0;
+// PART 1...
+function part1() {
+    const sonarReadings = splitFileByLines(inputPath).map((l) => Number(l));
 
-for await (const sonarReading of readLines(file)) {
-    const numericalReading = Number(sonarReading);
-    if (previous && numericalReading > previous) {
-        numberOfIncreases += 1;
+    let previous: number;
+    let totalIncreases = 0;
+
+    for (const reading of sonarReadings) {
+        if (previous && reading > previous) {
+            totalIncreases += 1;
+        }
+        previous = reading;
     }
-    previous = numericalReading;
+
+    return totalIncreases;
 }
 
-// PART 1 answer...
-console.info(numberOfIncreases);
+console.info(part1());
 
-// PART 2 answer...
+// PART 2...
+function part2() {
+    const sonarReadings = splitFileByLines(inputPath).map((l) => Number(l));
+
+    let groupEnd = 4;
+    let totalGroupIncreases = 0;
+
+    while (groupEnd < sonarReadings.length) {
+        const firstGroupSum = sonarReadings.slice(groupEnd - 4, groupEnd - 1).reduce((total, num) => total + num);
+        const secondGroupSum = sonarReadings.slice(groupEnd - 3, groupEnd).reduce((total, num) => total + num);
+        if (secondGroupSum > firstGroupSum) {
+            totalGroupIncreases += 1;
+        }
+        groupEnd += 1;
+    }
+
+    return totalGroupIncreases;
+}
+
+console.info(part2());
