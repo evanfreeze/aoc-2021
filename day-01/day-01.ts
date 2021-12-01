@@ -13,4 +13,7 @@ for await (const sonarReading of readLines(file)) {
     previous = numericalReading;
 }
 
+// PART 1 answer...
 console.info(numberOfIncreases);
+
+// PART 2 answer...

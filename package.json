@@ -1,0 +1,14 @@
+{
+    "name": "evanfreeze-aoc-2021",
+    "version": "1.0.0",
+    "description": "Advent of Code repo by Evan Freeze",
+    "main": "index.js",
+    "scripts": {
+        "test": "jest"
+    },
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "jest": "^27.4.3"
+    }
+}
