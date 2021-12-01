@@ -1,8 +1,9 @@
 import { splitFileByLines } from "../utils/file";
+import { printOutput } from "../utils/output";
 
 const inputPath = "day-01/input.txt";
+printOutput(part1, part2);
 
-// PART 1...
 function part1() {
     const sonarReadings = splitFileByLines(inputPath).map((l) => Number(l));
 
@@ -19,9 +20,6 @@ function part1() {
     return totalIncreases;
 }
 
-console.info(part1());
-
-// PART 2...
 function part2() {
     const sonarReadings = splitFileByLines(inputPath).map((l) => Number(l));
 
@@ -39,5 +37,3 @@ function part2() {
 
     return totalGroupIncreases;
 }
-
-console.info(part2());
