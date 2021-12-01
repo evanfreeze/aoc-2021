@@ -4,11 +4,15 @@
     "description": "Advent of Code repo by Evan Freeze",
     "main": "index.js",
     "scripts": {
-        "test": "jest"
+        "test": "jest",
+        "node": "node --require esbuild-register"
     },
     "author": "",
     "license": "ISC",
     "devDependencies": {
         "jest": "^27.4.3"
+    },
+    "dependencies": {
+        "esbuild-register": "^3.2.0"
     }
 }
