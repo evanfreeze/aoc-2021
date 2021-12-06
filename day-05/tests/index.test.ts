@@ -1,4 +1,4 @@
-import { parseLineIntoPointsHV, parseLineIntoPointsHVD } from "..";
+import { parseLineIntoPoints } from "..";
 
 const testInput = `0,9 -> 5,9
 8,0 -> 0,8
@@ -13,7 +13,7 @@ const testInput = `0,9 -> 5,9
 `;
 
 it("turns line definition into array of points", () => {
-    expect(parseLineIntoPointsHV(`0,9 -> 5,9`)).toEqual([
+    expect(parseLineIntoPoints(`0,9 -> 5,9`)).toEqual([
         [0, 9],
         [1, 9],
         [2, 9],
@@ -22,7 +22,7 @@ it("turns line definition into array of points", () => {
         [5, 9],
     ]);
 
-    expect(parseLineIntoPointsHV(`9,4 -> 3,4`)).toEqual([
+    expect(parseLineIntoPoints(`9,4 -> 3,4`)).toEqual([
         [9, 4],
         [8, 4],
         [7, 4],
@@ -32,7 +32,7 @@ it("turns line definition into array of points", () => {
         [3, 4],
     ]);
 
-    expect(parseLineIntoPointsHV(`7,0 -> 7,4`)).toEqual([
+    expect(parseLineIntoPoints(`7,0 -> 7,4`)).toEqual([
         [7, 0],
         [7, 1],
         [7, 2],
@@ -40,7 +40,7 @@ it("turns line definition into array of points", () => {
         [7, 4],
     ]);
 
-    expect(parseLineIntoPointsHV(`7,4 -> 7,0`)).toEqual([
+    expect(parseLineIntoPoints(`7,4 -> 7,0`)).toEqual([
         [7, 4],
         [7, 3],
         [7, 2],
@@ -50,25 +50,25 @@ it("turns line definition into array of points", () => {
 });
 
 it("with diagonals — turns line definition into array of points", () => {
-    expect(parseLineIntoPointsHVD("1,1 -> 3,3")).toEqual([
+    expect(parseLineIntoPoints("1,1 -> 3,3", true)).toEqual([
         [1, 1],
         [2, 2],
         [3, 3],
     ]);
 
-    expect(parseLineIntoPointsHVD("3,3 -> 1,1")).toEqual([
+    expect(parseLineIntoPoints("3,3 -> 1,1", true)).toEqual([
         [3, 3],
         [2, 2],
         [1, 1],
     ]);
 
-    expect(parseLineIntoPointsHVD("9,7 -> 7,9")).toEqual([
+    expect(parseLineIntoPoints("9,7 -> 7,9", true)).toEqual([
         [9, 7],
         [8, 8],
         [7, 9],
     ]);
 
-    expect(parseLineIntoPointsHVD("7,9 -> 9,7")).toEqual([
+    expect(parseLineIntoPoints("7,9 -> 9,7", true)).toEqual([
         [7, 9],
         [8, 8],
         [9, 7],
