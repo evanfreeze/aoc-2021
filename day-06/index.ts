@@ -34,4 +34,23 @@ function part1() {
     return calculateFishGrowth(fileLines[0], 80);
 }
 
-function part2() {}
+export function trackFishCountsByAge(input: string, days: number): number {
+    const startingFish = input.split(",").map(Number);
+    const ageGroups = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+    startingFish.forEach((fish) => (ageGroups[fish] += 1));
+
+    let daysCompleted = 0;
+
+    while (daysCompleted < days) {
+        const zeros = ageGroups.shift();
+        ageGroups[6] += zeros;
+        ageGroups.push(zeros);
+        daysCompleted += 1;
+    }
+
+    return ageGroups.reduce((total, group) => group + total, 0);
+}
+
+function part2() {
+    return trackFishCountsByAge(fileLines[0], 256);
+}
